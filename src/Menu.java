@@ -1,14 +1,17 @@
+import com.sun.tools.javac.comp.Todo;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
 class Menu{
+
     private ArrayList<Option> optionArrayList;
     private Scanner in;
 
     Menu(){
         this.optionArrayList = new ArrayList<>();
 
-
+        //fill the menu with options for main menu
         optionArrayList.add(new Item("Show Products"));
         optionArrayList.add(new Item("Add a new Product"));
         optionArrayList.add(new Item("Restock Products"));
@@ -22,6 +25,7 @@ class Menu{
 
 
     void setMenuOptions(ArrayList<Option> options){
+        clear();
         this.optionArrayList = options;
     }
 
@@ -29,11 +33,6 @@ class Menu{
         if(!optionArrayList.isEmpty())
             optionArrayList.clear();
     }
-
-    int getOptionsSize(){
-        return this.optionArrayList.size();
-    }
-
 
     int displayMenu(){
         int input;
@@ -58,8 +57,10 @@ class Menu{
             case 1: System.out.println("Current Products Available");
 
                 clear();
+                //Quesiton: why is setMenuOption not compatible? why cant it take Products list. Thought Option ArrayList will take either Item or Product objects?
+//                setMenuOptions(vm.getProducts());
                 optionArrayList.addAll(vm.getProducts());
-                this.setMenuOptions(optionArrayList);
+//                this.setMenuOptions(optionArrayList);
                 int optionSelected = displayMenu();
 
                 vm.purchaseProduct(vm.getProducts().get(optionSelected-1),in);
