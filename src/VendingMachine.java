@@ -2,13 +2,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class VendingMachine {
-    private Menu menu;
-    private ArrayList<Option> options;
-    private Scanner in;
-
 
     public VendingMachine() {
-        in = new Scanner(System.in);
+//        in = new Scanner(System.in);
 //        int optionSelectedFromMain = menu.displayMenu();
 //        processOptionFromMainMenu(optionSelectedFromMain);
     }
@@ -18,7 +14,7 @@ public class VendingMachine {
         ProductInventory.addProduct(product);
     }
 
-    public ArrayList<Product> showProducts(){
+    public ArrayList<Product> getProducts(){
         return ProductInventory.getProductInventory();
     }
 
@@ -26,7 +22,8 @@ public class VendingMachine {
         ProductInventory.removeProduct(i);
     }
 
-    public void purchaseProduct(Product p){
+    /**Have not implemented it yet*/
+    public void purchaseProduct(Product p, Scanner in){
         //this method implementation is not complete yet.
         if(p.getQuantity()>0){
             //purchase the product

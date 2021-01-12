@@ -13,6 +13,7 @@ class Menu{
         optionArrayList.add(new Item("Add a new Product"));
         optionArrayList.add(new Item("Restock Products"));
         optionArrayList.add(new Item("Exit"));
+
         in = new Scanner(System.in);
 
         int option = displayMenu();
@@ -57,11 +58,11 @@ class Menu{
             case 1: System.out.println("Current Products Available");
 
                 clear();
-                optionArrayList.addAll(vm.showProducts());
+                optionArrayList.addAll(vm.getProducts());
                 this.setMenuOptions(optionArrayList);
                 int optionSelected = displayMenu();
 
-                vm.purchaseProduct(vm.showProducts().get(optionSelected-1));
+                vm.purchaseProduct(vm.getProducts().get(optionSelected-1),in);
 
                 break;
 
