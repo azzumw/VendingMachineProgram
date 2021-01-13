@@ -4,9 +4,6 @@ import java.util.Scanner;
 public class VendingMachine {
 
     public VendingMachine() {
-//        in = new Scanner(System.in);
-//        int optionSelectedFromMain = menu.displayMenu();
-//        processOptionFromMainMenu(optionSelectedFromMain);
     }
 
     //add a product
