@@ -1,5 +1,3 @@
-import com.sun.tools.javac.comp.Todo;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,16 +15,18 @@ class Menu{
         optionArrayList.add(new Item("Restock Products"));
         optionArrayList.add(new Item("Exit"));
 
+
         in = new Scanner(System.in);
 
         int option = displayMenu();
-        processOptionFromMainMenu(option);
+        processMenuOption(option);
     }
 
-
+    /**Why cant this method accept list of Products?*/
     void setMenuOptions(ArrayList<Option> options){
         clear();
-        this.optionArrayList = options;
+        optionArrayList.addAll(options);
+
     }
 
     void clear(){
@@ -49,7 +49,7 @@ class Menu{
         return input;
     }
 
-    private void processOptionFromMainMenu(int optionEntered){
+    private void processMenuOption(int optionEntered){
         VendingMachine vm = new VendingMachine();
         //only focusing on case 1 for now until code clean
         switch (optionEntered){
@@ -60,7 +60,7 @@ class Menu{
                 //Quesiton: why is setMenuOption not compatible? why cant it take Products list. Thought Option ArrayList will take either Item or Product objects?
 //                setMenuOptions(vm.getProducts());
                 optionArrayList.addAll(vm.getProducts());
-//                this.setMenuOptions(optionArrayList);
+
                 int optionSelected = displayMenu();
 
                 vm.purchaseProduct(vm.getProducts().get(optionSelected-1),in);
