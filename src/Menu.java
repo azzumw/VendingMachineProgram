@@ -44,7 +44,7 @@ class Menu{
             System.out.print("Enter option: ");
             input = in.nextInt();
         }while (input<1 || input > optionArrayList.size());
-        this.clear();
+
         return input;
     }
 
