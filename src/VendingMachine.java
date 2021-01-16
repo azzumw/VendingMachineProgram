@@ -34,5 +34,4 @@ public class VendingMachine {
             System.out.println("Product is out of stock!");
         }
     }
-
 }

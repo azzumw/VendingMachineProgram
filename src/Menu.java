@@ -22,19 +22,18 @@ class Menu{
         processMenuOption(option);
     }
 
-    /**Why cant this method accept list of Products?*/
-    void setMenuOptions(ArrayList<Option> options){
+    private void setMenuOptions(ArrayList<? extends Option> options){
         clear();
         optionArrayList.addAll(options);
 
     }
 
-    void clear(){
+    private void clear(){
         if(!optionArrayList.isEmpty())
             optionArrayList.clear();
     }
 
-    int displayMenu(){
+    private int displayMenu(){
         int input;
         do {
             for(int i=0; i <optionArrayList.size(); i++){
@@ -56,15 +55,9 @@ class Menu{
 
             case 1: System.out.println("Current Products Available");
 
-                clear();
-                //Quesiton: why is setMenuOption not compatible? why cant it take Products list. Thought Option ArrayList will take either Item or Product objects?
-//                setMenuOptions(vm.getProducts());
-                optionArrayList.addAll(vm.getProducts());
-
+                setMenuOptions(vm.getProducts());
                 int optionSelected = displayMenu();
-
                 vm.purchaseProduct(vm.getProducts().get(optionSelected-1),in);
-
                 break;
 
             case 2: vm.addProduct(new Product("Dummy",4.00,1));
